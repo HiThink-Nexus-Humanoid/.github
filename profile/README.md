@@ -16,8 +16,8 @@ flowchart LR
     A[Human Motion] -->|GMR| B(Retargeted Robot Motion)
     B --> C[locomotion datasets]
     B --> D[tracking datasets]
-    C --> locomotion_rl_lab
-    D --> tracking_rl_lab
+    C -->|AMP| locomotion_rl_lab
+    D -->|MIMIC| tracking_rl_lab
 ```
 
 ---
@@ -45,9 +45,10 @@ flowchart LR
 flowchart LR
     FSM_Deploy -->|Sim2Sim| MuJoCo
     FSM_Deploy -->|Sim2Real| Robot_SDK
-    Robot_SDK -->|Control| Motors
-    Robot_SDK -->|Sensing| Cameras & Sensors
     Robot_SDK <--> ROS
+    ROS <-->|Control| Motors
+    ROS <-->|Sensing| Cameras & Sensors
+    
 ```
 
 > 💡 **Tip**: Render these diagrams using any Mermaid-compatible viewer (e.g., VS Code + Mermaid extension, Obsidian, or [mermaid.live](https://mermaid.live)).
